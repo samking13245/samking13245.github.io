@@ -21,7 +21,7 @@ createCanvas(1040,480);
 function draw() {
   background(0);
   image(imagearray[C],0,0);
-line(mouseX, C, mouseX, 100);
+
 
 if (mouseIsPressed){
   if (C < 750 && C >= 0 && mouseX >360){
