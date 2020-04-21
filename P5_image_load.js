@@ -1,8 +1,7 @@
 var imagearray = [];
 var i = 1;
 var C = 1;
-var pageturn = 0;
-var Cindex = 1;
+let pageturn = 0;
 let lastTime = 0;
 let pages = [ 1, 251, 501,750, ];
 let oddpages = [0,1,3,5,];
@@ -16,79 +15,77 @@ let links = ["https://ukdataservice.ac.uk/media/455582/uk-data-service-annual-re
 function preload()
 {
 for (i = 1; i < 752; i++) { 
-  imagearray[i] = loadImage('img/('+i+').jpg');
+  imagearray[i] = loadImage('img/('+i+').jpg'); // load all the images
   }
 }
   
 function setup() {
 createCanvas(720,720);
-image(imagearray[C],0,0);
+image(imagearray[C],0,0);  // load the first image 
 
 }
 
 
 function draw() {
- // image(imagearray[C],0,0);
- // text(pageturn,0,725); // Debuging
+
+  // text for the buttons 
   textSize(50);
   text("Read",140,575);
   text("Issue",140,630);
   text("Read",435,575);
   text("Issue",435,630);
-if (mouseIsPressed){
-  if (C < 750 && C >= 0 && mouseX >360 && mouseY <500){
-   if ( millis() - lastTime > 50 ) {
-     pageturn = pageturn + 1;
-    lastTime = millis();
-   }
-  }else if  (C <= 750 && C > 0 && mouseX <= 360 && mouseY <500){
-    if ( millis() - lastTime > 50 ) {
-     pageturn = pageturn - 1;
-    lastTime = millis();
-   }  
-}
+  
+  // end of text for the buttons
+  
 
 
-
-
-
-}// mouse pressed 
-
+// mouse pressed 
+ // turning foward
   if (C != pages[pageturn] && pages[pageturn] >= C){
-      if ( millis() - lastTime > 5) {
-      C = C + 1;
-       
-      image(imagearray[C],0,0);
-      lastTime = millis();
+        if ( millis() - lastTime > 5) { //speed of page turning
+        C = C + 1; // Page turning increments 
+        image(imagearray[C],0,0); // load image
+        lastTime = millis();
   } 
   }
+  // turning backward
   if(C != pages[pageturn] && pages[pageturn] <= C){
-   if ( millis() - lastTime > 5) {
-     C = C - 1;
-     image(imagearray[C],0,0);
-    lastTime = millis();
+       if ( millis() - lastTime > 5) { //speed of page turning
+       C = C - 1; // Page turning increments 
+       image(imagearray[C],0,0); // load image
+       lastTime = millis();
   }
   }
 
-}
 
-
-
+}// end of draw
 
 // after draw
-function mouseClicked() {
+function mousePressed() {
+//  // Button click detect
   if (mouseY >=500 && mouseY <665 && mouseX >=400 && mouseX <601) {
     if (pageturn == 0){
-      window.open(links[pageturn]);
+      window.open(links[pageturn]); //link to UKDS PDF
     }else if (pageturn != 0){
-      window.open(links[pageturn*2]);
+      window.open(links[pageturn*2]); //link to UKDS PDF
     }
-  }else if(mouseY >=500 && mouseY <665 && mouseX >=100 && mouseX <301){
-   window.open(links[oddpages[pageturn]]);
   }
+  else if(mouseY >=500 && mouseY <665 && mouseX >=100 && mouseX <301){
+   window.open(links[oddpages[pageturn]]); //link to UKDS PDF
+  }
+
+
+
+  // Page turn click detect
+   if (C < 750 && mouseX >360 && mouseY <500 && pageturn < 3){
+       pageturn = pageturn + 1; //turn forward to next index
+        
+
+  }else if  (C > 2 && mouseX <= 360 && mouseY <500 && pageturn != 0){
+     pageturn = pageturn - 1; //turn backwards to next index
 }
 
+}// end of mouse pressed
 
       
-     
-//}
+ 
