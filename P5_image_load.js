@@ -30,10 +30,15 @@ function draw() {
 
   // text for the buttons 
   textSize(50);
+  if(pageturn != 0){
   text("Read",140,575);
   text("Issue",140,630);
-  text("Read",435,575);
+  }
+  if(pageturn != 3){
+    text("Read",435,575);
   text("Issue",435,630);
+  }
+
   
   // end of text for the buttons
   
@@ -63,14 +68,14 @@ function draw() {
 // after draw
 function mousePressed() {
 //  // Button click detect
-  if (mouseY >=500 && mouseY <665 && mouseX >=400 && mouseX <601) {
+  if (mouseY >=500 && mouseY <665 && mouseX >=400 && mouseX <601 & pageturn != 3) {
     if (pageturn == 0){
       window.open(links[pageturn]); //link to UKDS PDF
     }else if (pageturn != 0){
       window.open(links[pageturn*2]); //link to UKDS PDF
     }
   }
-  else if(mouseY >=500 && mouseY <665 && mouseX >=100 && mouseX <301){
+  else if(mouseY >=500 && mouseY <665 && mouseX >=100 && mouseX <301 && pageturn != 0){
    window.open(links[oddpages[pageturn]]); //link to UKDS PDF
   }
 
