@@ -46,7 +46,7 @@ function setup() {
  video2rev.hide(); // by default video shows up in separate dom
   // element. hide it and draw it to the canvas
   // instead
- image(video1, 0, 0); // draw the video frame to canvas 
+ //image(video1, 0, 0); // draw the video frame to canvas 
 }
 
 function draw() {
