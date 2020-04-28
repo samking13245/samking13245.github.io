@@ -17,7 +17,7 @@ let video2revs;
 let linksindex = 0;
 let direction = 0;
 let pos = 0;
-let pageturn = 0;
+let pageturn = 2;
 let lastTime = 0;
 
 
@@ -47,20 +47,19 @@ function setup() {
  video2rev.hide(); // by default video shows up in separate dom
   // element. hide it and draw it to the canvas
   // instead
-// image(video1, 0, 0); // draw the video frame to canvas 
+//image(video1, 0, 0); // draw the video frame to canvas 
 }
 
 function draw() {
  
-//background(255);
-//text(direction,0,730);
+background(255);
+text(pageturn,0,730);
   
- if (pageturn == 0){ image(video1, 0, 0); // draw the video frame to canvas 
- video1.play();
+
  
-  } else if (pageturn == 1){ image(video1rev, 0, 0); // draw the video frame to canvas 
+   if (pageturn == 2){  image(video1, 0, 0); // draw the video frame to canvas 
       
- }else if (pageturn == 2){  image(video1, 0, 0); // draw the video frame to canvas 
+ }else if (pageturn == 1){ image(video1rev, 0, 0); // draw the video frame to canvas 
 
 
  } else if (pageturn == 3){image(video2rev, 0, 0); // draw the video frame to canvas 
@@ -109,6 +108,7 @@ function mousePressed() {
   // Page turn click detect
    if (mouseX >360 && mouseY <500 && direction == 0){
      video1.play(); // runs video file video1 
+    // video1.speed(4);
      pageturn = 2; // what page transition 
      direction = 1; //page index
      linksindex = linksindex + 1;
