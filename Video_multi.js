@@ -61,7 +61,7 @@ function draw() {
  if (pageturn == 0){  
    image(instructions, 0, 0);
 
-text(mouseY,0,730);
+
  
  
  } else if (pageturn == 2){  image(video1, 0, 0); // draw the video frame to canvas 
