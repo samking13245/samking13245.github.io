@@ -6,6 +6,7 @@
  * <a href="http://p5js.org/reference/#/libraries/p5.dom">p5.dom library</a>
  * at least one video file, and a running <a href="https://github.com/processing/p5.js/wiki/Local-server">local server</a>.</span></em></p>
  */
+
 let video1;
 let video1revs;
 
@@ -17,7 +18,7 @@ let video2revs;
 let linksindex = 0;
 let direction = 0;
 let pos = 0;
-let pageturn = 2;
+let pageturn = 0;
 let lastTime = 0;
 
 
@@ -30,6 +31,9 @@ let links = ["https://ukdataservice.ac.uk/media/455582/uk-data-service-annual-re
 "https://www.ukdataservice.ac.uk/media/264304/ESDS-AnnualReport20062007.pdf",];
 
 
+function preload() {
+  instructions = loadImage('data/instructions.png');
+}
 
 function setup() {
   createCanvas(720, 740);
@@ -52,13 +56,17 @@ function setup() {
 
 function draw() {
  
-background(255);
-text(pageturn,0,730);
-  
 
+  
+ if (pageturn == 0){  
+   image(instructions, 0, 0);
+
+text(mouseY,0,730);
  
-   if (pageturn == 2){  image(video1, 0, 0); // draw the video frame to canvas 
-      
+ 
+ } else if (pageturn == 2){  image(video1, 0, 0); // draw the video frame to canvas 
+     text("Read",435,575);
+  text("Issue",435,630);
  }else if (pageturn == 1){ image(video1rev, 0, 0); // draw the video frame to canvas 
 
 
@@ -74,7 +82,7 @@ text(pageturn,0,730);
   text("Read",140,575);
   text("Issue",140,630);
   }
-  if(linksindex != 15){
+  if(linksindex != 15 && linksindex != 0){
     text("Read",435,575);
   text("Issue",435,630);
   }
@@ -92,6 +100,12 @@ text(pageturn,0,730);
 // after draw
 function mousePressed() {
   // Button click detect
+  
+ 
+  
+
+  if (pageturn != 0){
+  
   if (mouseY >=500 && mouseY <665 && mouseX >=400 && mouseX <601 & pageturn != 15) {
     if (pageturn == 0){
       window.open(links[linksindex]); //link to UKDS PDF
@@ -133,5 +147,10 @@ function mousePressed() {
    
      
 }
+  }
+   if(mouseX > 200 && mouseX < 720 && mouseY > 615 && mouseY < 691 ){
+  pageturn = 2;
+  
+  }
 
 }// end of mouse pressed
