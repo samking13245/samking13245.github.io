@@ -1,3 +1,4 @@
+
 /*
  * @name Video Canvas
  * @description <p>Load a video with multiple formats and draw it to the canvas.</p>
@@ -16,7 +17,7 @@ let video2revs;
 let linksindex = 0;
 let direction = 0;
 let pos = 0;
-let pageturn = 2;
+let pageturn = 0;
 let lastTime = 0;
 
 
@@ -33,11 +34,11 @@ let links = ["https://ukdataservice.ac.uk/media/455582/uk-data-service-annual-re
 function setup() {
   createCanvas(720, 740);
   // specify multiple formats for different browsers
-  video1 = createVideo(['data/1forw.webm']);
-  video1rev = createVideo(['data/1revs.webm']);
+  video1 = createVideo('data/1forw.webm');
+  video1rev = createVideo('data/1revs.webm');
   
-  video2 = createVideo(['data/2forw.webm']);
-  video2rev = createVideo(['data/2revs.webm']);
+  video2 = createVideo('data/2forw.webm');
+  video2rev = createVideo('data/2revs.webm');
   
  video1.hide(); // by default video shows up in separate dom
  video1rev.hide(); // by default video shows up in separate dom
@@ -46,7 +47,7 @@ function setup() {
  video2rev.hide(); // by default video shows up in separate dom
   // element. hide it and draw it to the canvas
   // instead
- //image(video1, 0, 0); // draw the video frame to canvas 
+// image(video1, 0, 0); // draw the video frame to canvas 
 }
 
 function draw() {
@@ -54,12 +55,14 @@ function draw() {
 //background(255);
 //text(direction,0,730);
   
-
-      
-   if (pageturn == 1){ image(video1rev, 0, 0); // draw the video frame to canvas 
+ if (pageturn == 0){ image(video1, 0, 0); // draw the video frame to canvas 
+ video1.play();
+ 
+  } else if (pageturn == 1){ image(video1rev, 0, 0); // draw the video frame to canvas 
       
  }else if (pageturn == 2){  image(video1, 0, 0); // draw the video frame to canvas 
-    
+
+
  } else if (pageturn == 3){image(video2rev, 0, 0); // draw the video frame to canvas 
       
  }else if (pageturn == 4){image(video2, 0, 0); // draw the video frame to canvas 
