@@ -36,7 +36,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(720, 740);
+  createCanvas(720, 720);
   // specify multiple formats for different browsers
   video1 = createVideo('data/1forw.webm');
   video1rev = createVideo('data/1revs.webm');
@@ -51,7 +51,7 @@ function setup() {
  video2rev.hide(); // by default video shows up in separate dom
   // element. hide it and draw it to the canvas
   // instead
-//image(video1, 0, 0); // draw the video frame to canvas 
+
 }
 
 function draw() {
@@ -65,8 +65,8 @@ function draw() {
  
  
  } else if (pageturn == 2){  image(video1, 0, 0); // draw the video frame to canvas 
-     text("Read",435,575);
-  text("Issue",435,630);
+   
+
  }else if (pageturn == 1){ image(video1rev, 0, 0); // draw the video frame to canvas 
 
 
@@ -78,12 +78,12 @@ function draw() {
 
   // text for the buttons 
   textSize(50);
-  if(linksindex != 0){
+  if(linksindex != 0 ){
   text("Read",140,575);
   text("Issue",140,630);
   }
-  if(linksindex != 15 && linksindex != 0){
-    text("Read",435,575);
+  if(linksindex != 0 || pageturn == 2){
+  text("Read",435,575);
   text("Issue",435,630);
   }
 
