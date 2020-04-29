@@ -30,6 +30,7 @@ let links = ["https://ukdataservice.ac.uk/media/455582/uk-data-service-annual-re
 "https://www.ukdataservice.ac.uk/media/264307/ESDS-AnnualReport20072008.pdf",
 "https://www.ukdataservice.ac.uk/media/264304/ESDS-AnnualReport20062007.pdf",];
 
+let debug;
 
 function preload() {
   instructions = loadImage('data/instructions.png');
@@ -66,7 +67,7 @@ function draw() {
  
  } else if (pageturn == 2){  image(video1, 0, 0); // draw the video frame to canvas 
    
-
+text(debug,50,50);
  }else if (pageturn == 1){ image(video1rev, 0, 0); // draw the video frame to canvas 
 
 
@@ -121,8 +122,9 @@ function mousePressed() {
 
   // Page turn click detect
    if (mouseX >360 && mouseY <500 && direction == 0){
+     
      video1.play(); // runs video file video1 
-    // video1.speed(4);
+     debug = video1.duration();
      pageturn = 2; // what page transition 
      direction = 1; //page index
      linksindex = linksindex + 1;
@@ -148,8 +150,9 @@ function mousePressed() {
      
 }
   }
-   if(mouseX > 200 && mouseX < 720 && mouseY > 615 && mouseY < 691 ){
+   if(mouseX > 200 && mouseX < 720 && mouseY > 615 && mouseY < 691 ){ 
   pageturn = 2;
+  background(255);
   
   }
 
