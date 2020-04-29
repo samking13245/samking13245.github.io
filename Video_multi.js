@@ -34,6 +34,7 @@ let debug;
 
 function preload() {
   instructions = loadImage('data/instructions.png');
+  firstvidstill = loadImage('data/1.png');
 }
 
 function setup() {
@@ -152,7 +153,7 @@ function mousePressed() {
   }
    if(mouseX > 200 && mouseX < 720 && mouseY > 615 && mouseY < 691 ){ 
   pageturn = 2;
-  background(255);
+  image(firstvidstill, 0, 0);
   
   }
 
