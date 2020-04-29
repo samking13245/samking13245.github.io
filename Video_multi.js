@@ -7,6 +7,7 @@
  * at least one video file, and a running <a href="https://github.com/processing/p5.js/wiki/Local-server">local server</a>.</span></em></p>
  */
 
+
 let video1;
 let video1revs;
 
@@ -23,7 +24,10 @@ let lastTime = 0;
 
 
 let oddpages = [0,1,3,5,];
-let links = ["https://ukdataservice.ac.uk/media/455582/uk-data-service-annual-report-2014_2015_linked.pdf",
+let links = ["https://ukdataservice.ac.uk/media/622467/ukdsannualreport18.pdf",
+"https://ukdataservice.ac.uk/media/604931/50351_ukds_annual_report_17_web.pdf",
+"https://ukdataservice.ac.uk/media/604697/28817_ukds_annual_report_16_web.pdf",
+"https://ukdataservice.ac.uk/media/455582/uk-data-service-annual-report-2014_2015_linked.pdf",
 "https://ukdataservice.ac.uk/media/455259/ukdataserviceannualreport2012-2014.pdf",
 "https://www.ukdataservice.ac.uk/media/264313/ESDS-AnnualReport20092010.pdf",
 "https://www.ukdataservice.ac.uk/media/264310/ESDS-AnnualReport20082009.pdf",
@@ -37,14 +41,16 @@ function preload() {
   firstvidstill = loadImage('data/1.png');
 }
 
+
+
 function setup() {
   createCanvas(720, 720);
   // specify multiple formats for different browsers
-  video1 = createVideo('data/1forw.webm');
-  video1rev = createVideo('data/1revs.webm');
+  video1 = createVideo('data/1forw.mp4');
+  video1rev = createVideo('data/1revs.mp4');
   
-  video2 = createVideo('data/2forw.webm');
-  video2rev = createVideo('data/2revs.webm');
+  video2 = createVideo('data/2forw.mp4');
+  video2rev = createVideo('data/2revs.mp4');
   
  video1.hide(); // by default video shows up in separate dom
  video1rev.hide(); // by default video shows up in separate dom
@@ -57,23 +63,13 @@ function setup() {
 }
 
 function draw() {
- 
 
   
  if (pageturn == 0){  
    image(instructions, 0, 0);
-
-
- 
- 
- } else if (pageturn == 2){  image(video1, 0, 0); // draw the video frame to canvas 
-   
-text(debug,50,50);
+ } else if (pageturn == 2){  image(video1, 0, 0); // draw the video frame to canvas   
  }else if (pageturn == 1){ image(video1rev, 0, 0); // draw the video frame to canvas 
-
-
- } else if (pageturn == 3){image(video2rev, 0, 0); // draw the video frame to canvas 
-      
+ } else if (pageturn == 3){image(video2rev, 0, 0); // draw the video frame to canvas     
  }else if (pageturn == 4){image(video2, 0, 0); // draw the video frame to canvas 
  
 }
@@ -84,7 +80,7 @@ text(debug,50,50);
   text("Read",140,575);
   text("Issue",140,630);
   }
-  if(linksindex != 0 || pageturn == 2){
+  if(linksindex != 0 || pageturn == 2 || pageturn == 1){
   text("Read",435,575);
   text("Issue",435,630);
   }
@@ -150,8 +146,8 @@ function mousePressed() {
    
      
 }
-  }
-   if(mouseX > 200 && mouseX < 720 && mouseY > 615 && mouseY < 691 ){ 
+}
+   if(mouseX > 200 && mouseX < 720 && mouseY > 615 && mouseY < 691 && pageturn == 0){ //display first video image holder. 
   pageturn = 2;
   image(firstvidstill, 0, 0);
   
