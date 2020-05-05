@@ -23,7 +23,7 @@ let pageturn = 0;
 
 
 
-let oddpages = [0,1,3,5,];
+let oddpages = [0,1,3,5,7,9,11,];
 let links = ["https://ukdataservice.ac.uk/media/622467/ukdsannualreport18.pdf",
 "https://ukdataservice.ac.uk/media/604931/50351_ukds_annual_report_17_web.pdf",
 "https://ukdataservice.ac.uk/media/604697/28817_ukds_annual_report_16_web.pdf",
@@ -155,13 +155,20 @@ function draw() {
 
   // text for the buttons 
   textSize(50);
-  if(linksindex != 0 ){
+  if(linksindex != 0 && pageturn <= 13 ){
   text("Read",140,575);
   text("Issue",140,630);
   }
-  if(linksindex != 0 || pageturn == 2 || pageturn == 1){
+  if((linksindex != 0 || pageturn == 2 || pageturn == 1) && pageturn <= 11){
   text("Read",435,575);
   text("Issue",435,630);
+  }
+  textSize(30);
+  if (pageturn > 13){
+  text("Unavailable",125,595);
+  }
+  if (pageturn > 11){
+  text("Unavailable",420,595);
   }
 
 
@@ -183,14 +190,14 @@ function mousePressed() {
 
   if (pageturn != 0){
   
-  if (mouseY >=500 && mouseY <665 && mouseX >=400 && mouseX <601 & pageturn != 15) {
+  if (mouseY >=500 && mouseY <665 && mouseX >=400 && mouseX <601 && pageturn <= 11) {
     if (pageturn == 0){
       window.open(links[linksindex]); //link to UKDS PDF
     }else if (pageturn != 0){
       window.open(links[linksindex*2]); //link to UKDS PDF
     }
   }
-  else if(mouseY >=500 && mouseY <665 && mouseX >=100 && mouseX <301 && pageturn != 0){
+  else if(mouseY >=500 && mouseY <665 && mouseX >=100 && mouseX <301 && pageturn <= 13){
    window.open(links[oddpages[linksindex]]); //link to UKDS PDF
   }
 
