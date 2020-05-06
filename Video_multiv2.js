@@ -154,21 +154,21 @@ function draw() {
 }
 
   // text for the buttons 
-  textSize(50);
+  textSize(40);
   if(linksindex != 0 && pageturn <= 13 ){
-  text("Read",140,575);
-  text("Issue",140,630);
+  text("Read",155,575);
+  text("Issue",155,620);
   }
   if((linksindex != 0 || pageturn == 2 || pageturn == 1) && pageturn <= 11){
   text("Read",435,575);
-  text("Issue",435,630);
+  text("Issue",435,620);
   }
-  textSize(30);
+  textSize(22);
   if (pageturn > 13){
-  text("Unavailable",125,595);
+  text("Unavailable",150,595);
   }
   if (pageturn > 11){
-  text("Unavailable",420,595);
+  text("Unavailable",430,595);
   }
 
 
